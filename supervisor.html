@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>หัวหน้ากะ — INC Report</title>
+  <link rel="stylesheet" href="src/styles/main.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+</head>
+<body>
+<div class="sidebar">
+  <div class="sidebar-brand">
+    <div class="sidebar-brand-name">INC Report</div>
+    <div class="sidebar-brand-sub">Incident Management System</div>
+  </div>
+  <div class="sidebar-section-label">เมนูหลัก</div>
+  <nav class="sidebar-nav">
+    <a href="index.html"      class="nav-link"><i class="ti ti-star"></i> แจ้งอุบัติเหตุใหม่</a>
+    <a href="employee.html"   class="nav-link"><i class="ti ti-users"></i> สถานะพนักงาน</a>
+    <a href="supervisor.html" class="nav-link active"><i class="ti ti-mail"></i> หัวหน้ากะ</a>
+    <a href="dashboard.html"  class="nav-link"><i class="ti ti-chart-bar"></i> Dashboard</a>
+  </nav>
+  <div class="sidebar-user">
+    <div class="user-avatar">จป</div>
+    <div><div class="user-name">รป. คุณลัทธณ์</div><div class="user-role">Safety Officer</div></div>
+  </div>
+  <div class="sidebar-logout"><i class="ti ti-logout"></i> ออกจากระบบ</div>
+</div>
+<div class="topbar">
+  <div class="search-bar">
+    <i class="ti ti-search"></i>
+    <input type="text" placeholder="ค้นหา...">
+  </div>
+  <div class="topbar-right">
+    <div class="topbar-icon"><i class="ti ti-bell"></i><div class="notif-badge">1</div></div>
+    <div class="topbar-icon"><i class="ti ti-help-circle"></i></div>
+    <div class="topbar-user">
+      <div class="user-avatar" style="width:32px;height:32px;font-size:12px">จป</div>
+      <div><div class="topbar-user-name">Admin User</div><div class="topbar-user-role">Safety Manager</div></div>
+    </div>
+  </div>
+</div>
+<div class="main-content">
+  <div class="page-header-row" style="margin-bottom:20px">
+    <div>
+      <div class="page-title">การตอบกลับหัวหน้ากะ</div>
+      <div class="page-sub">ติดตามสถานะและอัปเดตมาตรการแต่ละแผนก</div>
+    </div>
+    <!-- Dropdown กรองเดือน + รหัสเคส -->
+    <div style="display:flex;gap:10px;align-items:center">
+      <select id="selMonth" style="font-size:14px;padding:10px 16px;border-radius:10px;border:1.5px solid var(--gray-bd);background:var(--bg);color:var(--text);min-width:180px">
+        <option value="all">ทุกเดือน</option>
+      </select>
+      <select id="selInc" style="font-size:14px;padding:10px 16px;border-radius:10px;border:1.5px solid var(--gray-bd);background:var(--bg);color:var(--text);min-width:280px">
+        <option value="all">ทุกเคส</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- Metrics summary -->
+  <div id="metrics" class="grid4" style="margin-bottom:20px"></div>
+
+  <!-- ตาราง -->
+  <div id="content"><div class="loading">กำลังโหลด...</div></div>
+</div>
+
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <div class="modal-title" id="modalTitle">อัปเดตสถานะ</div>
+    <div class="field">
+      <label>สถานะ</label>
+      <select id="mStatus">
+        <option value="Inprocess">Inprocess — กำลังดำเนินการ</option>
+        <option value="Completed">Completed — เสร็จสิ้น</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>มาตรการที่จะดำเนินการ</label>
+      <textarea id="mMeasure" placeholder="ระบุมาตรการ..."></textarea>
+    </div>
+    <div class="field">
+      <label>Due date (กำหนดเสร็จ)</label>
+      <input type="date" id="mDue">
+    </div>
+    <div style="background:var(--gray-lt);border-radius:var(--radius);padding:10px 14px;font-size:13px;color:var(--text2)">
+      <i class="ti ti-clock" style="font-size:14px;vertical-align:-2px"></i>
+      วันที่อัปเดตจะบันทึกเป็นวันนี้อัตโนมัติ
+    </div>
+    <div class="modal-btns">
+      <button class="btn-outline" onclick="closeModal()">ยกเลิก</button>
+      <button class="btn-primary" style="width:auto;padding:10px 24px" onclick="saveModal()">บันทึก</button>
+    </div>
+  </div>
+</div>
+<script src="src/lib/config.js"></script>
+<script src="src/pages/supervisor.js"></script>
+</body>
+</html>

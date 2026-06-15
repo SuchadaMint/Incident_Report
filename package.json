@@ -1,0 +1,12 @@
+{
+  "name": "inc-report",
+  "version": "1.0.0",
+  "description": "ระบบแจ้งอุบัติเหตุ TCRB",
+  "scripts": {
+    "dev": "npx serve . --listen 3000"
+  },
+  "dependencies": {
+    "@azure/msal-browser": "^5.13.0",
+    "@microsoft/microsoft-graph-client": "^3.0.7"
+  }
+}
